@@ -33,7 +33,7 @@ SELECT * FROM raw_mediciones limit 10;
 
 -- 2. CANTIDAD DE REGISTROS (VOLUMETRÍA)
 
-SELECT 'raw_municipios' AS tabla, COUNT(*) AS total_registros FROM raw_municipios  
+SELECT 'raw_municipios' AS tabla, COUNT(*) AS total_registros FROM raw_municipios   -- Cantidad filas
 UNION ALL                                                                           
 SELECT 'raw_alertas_ambientales', COUNT(*) FROM raw_alertas_ambientales
 UNION ALL
@@ -50,47 +50,47 @@ SELECT 'raw_mediciones', COUNT(*) FROM raw_mediciones;
 -- Identificación valores NULL y vacios en raw_municipios
 SELECT DISTINCT
        'municipio_id' AS columna,
-       municipio_id COLLATE utf8mb4_0900_bin AS valor
+       municipio_id AS valor
 FROM raw_municipios
 WHERE municipio_id IS NULL
    OR TRIM(municipio_id) = ''
 UNION ALL
 SELECT DISTINCT
        'municipio' AS columna,
-       municipio COLLATE utf8mb4_0900_bin AS valor
+       municipio AS valor
 FROM raw_municipios
 WHERE municipio IS NULL
    OR TRIM(municipio) = ''
 UNION ALL
 SELECT DISTINCT
        'departamento' AS columna,
-       departamento COLLATE utf8mb4_0900_bin AS valor
+       departamento  AS valor
 FROM raw_municipios
 WHERE departamento IS NULL
    OR TRIM(departamento) = ''
 UNION ALL
 SELECT DISTINCT
        'region' AS columna,
-       region COLLATE utf8mb4_0900_bin AS valor
+       region  AS valor
 FROM raw_municipios
 WHERE region IS NULL
    OR TRIM(region) = ''
 ORDER BY columna, valor;
 
 -- Identificación valores PSEUDO-NULL en raw_municipios
-SELECT DISTINCT 'municipio_id' AS columna, municipio_id COLLATE utf8mb4_0900_bin AS valor
+SELECT DISTINCT 'municipio_id' AS columna, municipio_id AS valor
 FROM raw_municipios
 WHERE municipio_id IS NULL OR municipio_id NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'municipio', municipio COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'municipio', municipio
 FROM raw_municipios
 WHERE municipio IS NULL OR municipio NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'departamento', departamento COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'departamento', departamento 
 FROM raw_municipios
 WHERE departamento IS NULL OR departamento NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'region', region COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'region', region 
 FROM raw_municipios
 WHERE region IS NULL OR region NOT REGEXP '[0-9]'
 ORDER BY columna, valor;
@@ -130,21 +130,21 @@ WHERE alerta_id IS NULL
 UNION ALL
 SELECT DISTINCT
        'nivel_alerta' AS columna,
-       nivel_alerta COLLATE utf8mb4_0900_bin AS valor
+       nivel_alerta AS valor
 FROM raw_alertas_ambientales
 WHERE nivel_alerta IS NULL
    OR TRIM(nivel_alerta) = ''
 UNION ALL
 SELECT DISTINCT
        'contaminante_causante' AS columna,
-       contaminante_causante COLLATE utf8mb4_0900_bin AS valor
+       contaminante_causante AS valor
 FROM raw_alertas_ambientales
 WHERE contaminante_causante IS NULL
    OR TRIM(contaminante_causante) = ''
 UNION ALL
 SELECT DISTINCT
        'descripcion' AS columna,
-       descripcion COLLATE utf8mb4_0900_bin AS valor
+       descripcion  AS valor
 FROM raw_alertas_ambientales
 WHERE descripcion IS NULL
    OR TRIM(descripcion) = ''
@@ -155,15 +155,15 @@ SELECT DISTINCT 'alerta_id' AS columna, alerta_id AS valor
 FROM raw_alertas_ambientales
 WHERE alerta_id IS NULL OR alerta_id NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'nivel_alerta', nivel_alerta COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'nivel_alerta', nivel_alerta 
 FROM raw_alertas_ambientales
 WHERE nivel_alerta IS NULL OR nivel_alerta NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'contaminante_causante', contaminante_causante COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'contaminante_causante', contaminante_causante 
 FROM raw_alertas_ambientales
 WHERE contaminante_causante IS NULL OR contaminante_causante NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'descripcion', descripcion COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'descripcion', descripcion 
 FROM raw_alertas_ambientales
 WHERE descripcion IS NULL OR descripcion NOT REGEXP '[0-9]'
 ORDER BY columna, valor;
@@ -203,28 +203,28 @@ WHERE contaminante_id IS NULL
 UNION ALL
 SELECT DISTINCT
        'nombre' AS columna,
-       nombre COLLATE utf8mb4_0900_bin AS valor
+       nombre  AS valor
 FROM raw_contaminantes
 WHERE nombre IS NULL
    OR TRIM(nombre) = ''
 UNION ALL
 SELECT DISTINCT
        'codigo' AS columna,
-       codigo COLLATE utf8mb4_0900_bin AS valor
+       codigo  AS valor
 FROM raw_contaminantes
 WHERE codigo IS NULL
    OR TRIM(codigo) = ''
 UNION ALL
 SELECT DISTINCT
        'unidad_medida' AS columna,
-       unidad_medida COLLATE utf8mb4_0900_bin AS valor
+       unidad_medida  AS valor
 FROM raw_contaminantes
 WHERE unidad_medida IS NULL
    OR TRIM(unidad_medida) = ''
 UNION ALL
 SELECT DISTINCT
        'categoria' AS columna,
-       categoria COLLATE utf8mb4_0900_bin AS valor
+       categoria  AS valor
 FROM raw_contaminantes
 WHERE categoria IS NULL
    OR TRIM(categoria) = ''
@@ -235,19 +235,19 @@ SELECT DISTINCT 'contaminante_id' AS columna, contaminante_id AS valor
 FROM raw_contaminantes
 WHERE contaminante_id IS NULL OR contaminante_id NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'nombre', nombre COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'nombre', nombre 
 FROM raw_contaminantes
 WHERE nombre IS NULL OR nombre NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'codigo', codigo COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'codigo', codigo 
 FROM raw_contaminantes
 WHERE codigo IS NULL OR codigo NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'unidad_medida', unidad_medida COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'unidad_medida', unidad_medida 
 FROM raw_contaminantes
 WHERE unidad_medida IS NULL OR unidad_medida NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'categoria', categoria COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'categoria', categoria 
 FROM raw_contaminantes
 WHERE categoria IS NULL OR categoria NOT REGEXP '[0-9]'
 ORDER BY columna, valor;
@@ -287,28 +287,28 @@ FROM raw_contaminantes;
 -- Identificación valores NULL y vacios en raw_estaciones
 SELECT DISTINCT
        'estacion_id' AS columna,
-       estacion_id COLLATE utf8mb4_0900_bin AS valor
+       estacion_id AS valor
 FROM raw_estaciones
 WHERE estacion_id IS NULL
    OR TRIM(estacion_id) = ''
 UNION ALL
 SELECT DISTINCT
        'nombre_estacion' AS columna,
-       nombre_estacion COLLATE utf8mb4_0900_bin AS valor
+       nombre_estacion  AS valor
 FROM raw_estaciones
 WHERE nombre_estacion IS NULL
    OR TRIM(nombre_estacion) = ''
 UNION ALL
 SELECT DISTINCT
        'municipio_id' AS columna,
-       municipio_id COLLATE utf8mb4_0900_bin AS valor
+       municipio_id  AS valor
 FROM raw_estaciones
 WHERE municipio_id IS NULL
    OR TRIM(municipio_id) = ''
 UNION ALL
 SELECT DISTINCT
        'tipo_estacion' AS columna,
-       tipo_estacion COLLATE utf8mb4_0900_bin AS valor
+       tipo_estacion  AS valor
 FROM raw_estaciones
 WHERE tipo_estacion IS NULL
    OR TRIM(tipo_estacion) = ''
@@ -327,33 +327,33 @@ WHERE longitud IS NULL
 UNION ALL
 SELECT DISTINCT
        'fecha_instalacion' AS columna,
-       fecha_instalacion COLLATE utf8mb4_0900_bin AS valor
+       fecha_instalacion  AS valor
 FROM raw_estaciones
 WHERE fecha_instalacion IS NULL
    OR TRIM(fecha_instalacion) = ''
 UNION ALL
 SELECT DISTINCT
        'estado' AS columna,
-       estado COLLATE utf8mb4_0900_bin AS valor
+       estado AS valor
 FROM raw_estaciones
 WHERE estado IS NULL
    OR TRIM(estado) = ''
 ORDER BY columna, valor;
 
 -- Identificación valores PSEUDO-NULL en raw_estaciones
-SELECT DISTINCT 'estacion_id' AS columna, estacion_id COLLATE utf8mb4_0900_bin AS valor
+SELECT DISTINCT 'estacion_id' AS columna, estacion_id  AS valor
 FROM raw_estaciones
 WHERE estacion_id IS NULL OR estacion_id NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'nombre_estacion', nombre_estacion COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'nombre_estacion', nombre_estacion 
 FROM raw_estaciones
 WHERE nombre_estacion IS NULL OR nombre_estacion NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'municipio_id', municipio_id COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'municipio_id', municipio_id 
 FROM raw_estaciones
 WHERE municipio_id IS NULL OR municipio_id NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'tipo_estacion', tipo_estacion COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'tipo_estacion', tipo_estacion 
 FROM raw_estaciones
 WHERE tipo_estacion IS NULL OR tipo_estacion NOT REGEXP '[0-9]'
 UNION ALL
@@ -365,11 +365,11 @@ SELECT DISTINCT 'longitud', longitud
 FROM raw_estaciones
 WHERE longitud IS NULL OR longitud NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'fecha_instalacion', fecha_instalacion COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'fecha_instalacion', fecha_instalacion 
 FROM raw_estaciones
 WHERE fecha_instalacion IS NULL OR fecha_instalacion NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'estado', estado COLLATE utf8mb4_0900_bin
+SELECT DISTINCT 'estado', estado 
 FROM raw_estaciones
 WHERE estado IS NULL OR estado NOT REGEXP '[0-9]'
 ORDER BY columna, valor;
@@ -493,7 +493,7 @@ WHERE velocidad_viento IS NULL
 UNION ALL
 SELECT DISTINCT
        'calidad_dato' AS columna,
-       calidad_dato COLLATE utf8mb4_0900_bin AS valor
+       calidad_dato AS valor
 FROM raw_mediciones
 WHERE calidad_dato IS NULL
    OR TRIM(calidad_dato) = ''
@@ -540,7 +540,7 @@ SELECT DISTINCT 'velocidad_viento', velocidad_viento
 FROM raw_mediciones
 WHERE velocidad_viento IS NULL OR velocidad_viento NOT REGEXP '[0-9]'
 UNION ALL
-SELECT DISTINCT 'calidad_dato', calidad_dato COLLATE utf8mb4_0900_bin     
+SELECT DISTINCT 'calidad_dato', calidad_dato     
 FROM raw_mediciones
 WHERE calidad_dato IS NULL OR calidad_dato NOT REGEXP '[0-9]'
 ORDER BY columna, valor;
@@ -624,7 +624,7 @@ SELECT 'calidad_dato', COUNT(*),
        ROUND(100 * SUM(TRIM(calidad_dato) IN ('', 'N/A', 'NA', 'Sin dato', 'No disponible')) / COUNT(*), 2)
 FROM raw_mediciones;
 
--- 3.1 CARDINALIDAD
+-- 3.1 CARDINALIDAD contar cuantos valores diferentes existen
 
 -- Cardinalidad raw_municipios
 SELECT
@@ -886,12 +886,13 @@ GROUP BY medicion_id
 HAVING COUNT(*) > 1;
 
 
--- 6. IDENTIFICACIÓN DE PROBLEMAS DE CALIDAD (INTEGRIDAD REFERENCIAL)
+-- 6. IDENTIFICACIÓN DE PROBLEMAS DE CALIDAD (INTEGRIDAD REFERENCIAL)  -- Identificador que no existe en la tabla referenciada 
 -- HUÉRFANOS - raw_estaciones → raw_municipios
 SELECT e.estacion_id, e.municipio_id
-FROM raw_estaciones e
-LEFT JOIN raw_municipios mu ON e.municipio_id = mu.municipio_id
-WHERE mu.municipio_id IS NULL;
+FROM raw_estaciones e  -- tabla hija 
+LEFT JOIN raw_municipios mu ON e.municipio_id = mu.municipio_id -- tabla padre
+WHERE mu.municipio_id IS NULL
+AND e.municipio_id IS NOT NULL;
 
 -- HUÉRFANOS - raw_mediciones → raw_alertas_ambientales
 SELECT m.medicion_id, m.alerta_id
@@ -904,15 +905,17 @@ AND m.alerta_id IS NOT NULL;
 SELECT m.medicion_id, m.contaminante_id
 FROM raw_mediciones m
 LEFT JOIN raw_contaminantes c ON m.contaminante_id = c.contaminante_id
-WHERE c.contaminante_id IS NULL;
+WHERE c.contaminante_id IS NULL
+AND m.contaminante_id IS NOT NULL;
 
 -- HUÉRFANOS - raw_mediciones → raw_estaciones
 SELECT m.medicion_id, m.estacion_id
 FROM raw_mediciones m
 LEFT JOIN raw_estaciones e ON m.estacion_id = e.estacion_id
-WHERE e.estacion_id IS NULL;
+WHERE e.estacion_id IS NULL
+AND m.estacion_id IS NOT NULL;
 
--- 7. MUESTREO DE VALORES NO ESTANDARIZADOS
+-- 7. MUESTREO DE VALORES NO ESTANDARIZADOS - Valores que representan la misma cosa, pero están escritos de forma diferentes
 -- MUESTREO - raw_municipios
 SELECT DISTINCT municipio    COLLATE utf8mb4_0900_bin AS municipio    FROM raw_municipios ORDER BY 1;
 SELECT DISTINCT departamento COLLATE utf8mb4_0900_bin AS departamento FROM raw_municipios ORDER BY 1;
@@ -936,8 +939,8 @@ SELECT DISTINCT fecha_instalacion COLLATE utf8mb4_0900_bin AS fecha_instalacion 
 
 -- MUESTREO DE VALORES NO ESTANDARIZADOS - raw_mediciones
 SELECT DISTINCT calidad_dato COLLATE utf8mb4_0900_bin AS calidad_dato FROM raw_mediciones ORDER BY 1;
-SELECT REGEXP_REPLACE(fecha, '[0-9]', '9') AS formato_fecha,
-       MIN(fecha) AS ejemplo
+SELECT REGEXP_REPLACE(fecha, '[0-9]', '9') AS formato_fecha, -- convierte el formato a 99-99-9999
+      min(fecha) AS ejemplo
 FROM raw_mediciones
 GROUP BY formato_fecha;
 SELECT DISTINCT concentracion    FROM raw_mediciones ORDER BY concentracion    ASC  LIMIT 15;
@@ -950,8 +953,8 @@ SELECT DISTINCT velocidad_viento FROM raw_mediciones ORDER BY velocidad_viento A
 SELECT DISTINCT velocidad_viento FROM raw_mediciones ORDER BY velocidad_viento DESC LIMIT 15;
  
 
--- 8 OUTLIERS 
--- No aplica para municipios, alertas y contaminantes.
+-- 8 OUTLIERS  -- Valor muy alejado del comportamiento normal de los datos
+-- No aplica para municipios, alertas y contaminantes (datos categóricos)
 
 -- Outliers - raw_estaciones
 SELECT estacion_id, nombre_estacion, latitud, longitud
@@ -960,11 +963,11 @@ WHERE latitud  NOT BETWEEN -90  AND 90
    OR longitud NOT BETWEEN -180 AND 180;
    
    -- Outliers - raw_mediciones
-WITH valores AS (
+WITH valores AS (                                                       -- Método IQR
     SELECT 'concentracion' AS columna,
-           CAST(concentracion AS DECIMAL(10,2)) AS valor
+           CAST(concentracion AS DECIMAL(10,2)) AS valor  -- lo convierte a decimal porque esta en texto, permite 10 digitos en total y 2 después del punto.
     FROM raw_mediciones
-    WHERE concentracion REGEXP '^-?[0-9]+([.][0-9]+)?$'
+    WHERE concentracion REGEXP '^-?[0-9]+([.][0-9]+)?$'  -- solamente nos quedamos con números si hay texto no los incluye 
     UNION ALL
     SELECT 'temperatura', CAST(temperatura AS DECIMAL(10,2))
     FROM raw_mediciones
@@ -978,24 +981,24 @@ WITH valores AS (
     FROM raw_mediciones
     WHERE velocidad_viento REGEXP '^-?[0-9]+([.][0-9]+)?$'
 ),
-posiciones AS (
-    SELECT columna,
-           valor,
-           ROW_NUMBER() OVER (PARTITION BY columna ORDER BY valor) AS posicion,
-           COUNT(*)     OVER (PARTITION BY columna)                AS total
+posiciones AS (                                                                 -- ordena los valores de cada variable de menor a mayor y asignales una posición
+    SELECT columna,                                                             -- row number asigna un número consecutivo a cada fila
+           valor,                                                                   
+           ROW_NUMBER() OVER (PARTITION BY columna ORDER BY valor) AS posicion,  -- partition by hace que la numeración empiece por cada variable humedad, temperatura, etc y los ordena
+           COUNT(*)     OVER (PARTITION BY columna)                AS total      -- luego hacemos un conteo de cada variable por valor 
     FROM valores
 ),
 cuartiles AS (
-    SELECT columna,
-           MAX(CASE WHEN posicion = ROUND(total * 0.25) THEN valor END) AS q1,
+    SELECT columna,                                                                -- calculamos los cuartiles Q1 25% Q2 50% y Q3 75%
+           MAX(CASE WHEN posicion = ROUND(total * 0.25) THEN valor END) AS q1,     -- IQR=Q3-Q1 RANGO INTERCUARTILICO
            MAX(CASE WHEN posicion = ROUND(total * 0.50) THEN valor END) AS q2,
            MAX(CASE WHEN posicion = ROUND(total * 0.75) THEN valor END) AS q3
     FROM posiciones
     GROUP BY columna
 ),
 limites AS (
-    SELECT columna, q1, q2, q3,
-           q3 - q1              AS iqr,
+    SELECT columna, q1, q2, q3,                                                    -- limite inferior =q1 - 1,5 * IQR 
+           q3 - q1              AS iqr,                                            -- limite superior = q3 - 1,5 * IQR
            q1 - 1.5 * (q3 - q1) AS limite_inferior,
            q3 + 1.5 * (q3 - q1) AS limite_superior
     FROM cuartiles
