@@ -1,5 +1,5 @@
 # proyecto-medallion-ambiental
-Proyecto didáctico curso programación análisis de datos
+Pipeline de calidad de datos en MySQL con arquitectura Medallion: 100.007 mediciones depuradas, modelo estrella y 7 pruebas QA
 # De datos sucios a un modelo confiable con SQL 📊
 
 Proyecto final del Técnico en Programación para Análisis de Datos 
